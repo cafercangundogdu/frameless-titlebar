@@ -1,6 +1,6 @@
 {
   "name": "@cafercangundogdu/frameless-titlebar",
-  "version": "2.3.6",
+  "version": "2.3.7",
   "description": "Customizable titlebar for frameless Electron desktop applications",
   "author": "cafercangundogdu",
   "license": "MIT",
