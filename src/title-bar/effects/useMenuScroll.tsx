@@ -1,21 +1,24 @@
-import { useCallback } from 'react';
+import React, { useCallback } from "react";
 
-const stopScrolling = (e: Event) => {
+const stopScrolling = (e: React.WheelEvent) => {
   e.preventDefault();
   e.stopPropagation();
-  e.returnValue = false;
+  // e.returnValue = false;
   return false;
 };
 
 const useMenuScroll = (scrollRef: React.RefObject<HTMLElement>) => {
   return useCallback(
-    e => {
+    (e: React.WheelEvent) => {
       const { scrollTop, scrollHeight, clientHeight } = scrollRef.current!;
       const wheelDelta = e.deltaY;
       const isDeltaPositive = wheelDelta > 0;
       const step = 10; // scroll speed
 
-      if (isDeltaPositive && wheelDelta > scrollHeight - clientHeight - scrollTop) {
+      if (
+        isDeltaPositive &&
+        wheelDelta > scrollHeight - clientHeight - scrollTop
+      ) {
         // eslint-disable-next-line no-param-reassign
         scrollRef.current!.scrollTop = scrollHeight;
         return stopScrolling(e);

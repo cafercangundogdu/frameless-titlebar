@@ -1,28 +1,38 @@
-import React, { useContext } from 'react';
-import PropTypes from 'prop-types';
-import styles from '../style.css';
-import { MinimizeIcon, MaximizeIcon, CloseIcon, RestoreIcon } from './icons';
-import { ThemeContext } from '../theme';
-import WindowButton from './button';
-import { WindowControlsProps, ControlsTheme } from '../typings';
+import React, { useContext } from "react";
+import PropTypes from "prop-types";
+import styles from "../style.css";
+import { MinimizeIcon, MaximizeIcon, CloseIcon, RestoreIcon } from "./icons";
+import { ThemeContext } from "../theme";
+import WindowButton from "./button";
+import { WindowControlsProps, ControlsTheme } from "../typings";
 
-const buttons = (isWin: boolean, maximized: boolean, onMinimize: () => void, onMaximize: () => void, onClose: () => void) => ([
+const buttons = (
+  isWin: boolean,
+  maximized: boolean,
+  onMinimize: () => void,
+  onMaximize: () => void,
+  onClose: () => void
+) => [
   {
-    type: 'minimize',
+    type: "minimize",
     onClick: onMinimize,
-    icon: <MinimizeIcon isWin={isWin} />
+    icon: <MinimizeIcon isWin={isWin} />,
   },
   {
-    type: 'maximize',
+    type: "maximize",
     onClick: onMaximize,
-    icon: maximized ? <RestoreIcon isWin={isWin} /> : <MaximizeIcon isWin={isWin} />
+    icon: maximized ? (
+      <RestoreIcon isWin={isWin} />
+    ) : (
+      <MaximizeIcon isWin={isWin} />
+    ),
   },
   {
-    type: 'close',
+    type: "close",
     onClick: onClose,
-    icon: <CloseIcon isWin={isWin} />
-  }
-]);
+    icon: <CloseIcon isWin={isWin} />,
+  },
+];
 
 const WindowControls = ({
   onMinimize,
@@ -34,38 +44,46 @@ const WindowControls = ({
   focused,
   hideControls,
 }: WindowControlsProps) => {
-  const {
-    platform,
-    bar,
-    controls
-  } = useContext(ThemeContext);
-  const isWin = platform === 'win32';
+  const { platform, bar, controls } = useContext(ThemeContext);
+  const isWin = platform === "win32";
   const itemWidth = isWin ? 48 : 40;
-  const width = itemWidth * (3 - (disableMaximize ? 1 : 0) - (disableMinimize ? 1 : 0));
+  const width =
+    itemWidth * (3 - (disableMaximize ? 1 : 0) - (disableMinimize ? 1 : 0));
 
-  const children =
-    buttons(isWin, maximized ?? false, onMinimize!, onMaximize!, onClose!)
-      .filter(x => !(disableMaximize && x.type == 'maximize' || disableMinimize && x.type == 'minimize'))
-      .map((b) => {
-        return (
-          <WindowButton
-            key={b.type}
-            platform={platform}
-            close={b.type === 'close'}
-            onClick={b.onClick}
-            controls={controls as Required<ControlsTheme>}
-          >
-            {b.icon}
-          </WindowButton>
+  const children = buttons(
+    isWin,
+    maximized ?? false,
+    onMinimize!,
+    onMaximize!,
+    onClose!
+  )
+    .filter(
+      (x) =>
+        !(
+          (disableMaximize && x.type == "maximize") ||
+          (disableMinimize && x.type == "minimize")
         )
-      });
+    )
+    .map((b) => {
+      return (
+        <WindowButton
+          key={b.type}
+          platform={platform}
+          close={b.type === "close"}
+          onClick={b.onClick}
+          controls={controls as Required<ControlsTheme>}
+        >
+          {b.icon}
+        </WindowButton>
+      );
+    });
 
   return (
     <div
       className={styles.ControlsWrapper}
       style={{
         opacity: focused ? 1 : bar!.inActiveOpacity,
-        width
+        width,
       }}
     >
       {hideControls ? null : children}
@@ -77,7 +95,7 @@ WindowControls.propTypes = {
   focused: PropTypes.bool,
   onMinimize: PropTypes.func,
   onMaximize: PropTypes.func,
-  onClose: PropTypes.func
-}
+  onClose: PropTypes.func,
+};
 
 export default WindowControls;

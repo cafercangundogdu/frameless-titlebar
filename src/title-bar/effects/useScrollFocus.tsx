@@ -1,5 +1,5 @@
-import { useLayoutEffect } from 'react';
-import { RectResult } from '../typings';
+import { useLayoutEffect } from "react";
+import { RectResult } from "../typings";
 
 const useScrollFocus = (
   currentIndex: number,

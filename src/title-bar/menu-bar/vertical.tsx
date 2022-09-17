@@ -1,37 +1,46 @@
-import React, { useEffect, useReducer, useState } from 'react';
-import MenuButton from './menu-button';
+import React, { useEffect, useReducer, useState } from "react";
+import MenuButton from "./menu-button";
 import {
   useChildRefs,
   useWidth,
   usePrevious,
-  useAccessibility
-} from '../effects';
-import reducer, { initialState } from './reducer';
-import { MenuIcon } from './icons';
-import { VerticalMenuProps, MenuItem } from '../typings';
+  useAccessibility,
+} from "../effects";
+import reducer, { initialState } from "./reducer";
+import { MenuIcon } from "./icons";
+import { VerticalMenuProps, MenuItem } from "../typings";
 
 const menuButton = (menu: MenuItem[]): MenuItem => {
   return {
-    id: 'menu-button',
-    label: 'Menu',
-    submenu: menu
+    id: "menu-button",
+    label: "Menu",
+    submenu: menu,
   };
 };
 
 const depth = 0;
-const VerticalMenu = ({ menu, focused, currentWindow, onOpen, onButtonHover }: VerticalMenuProps) => {
+const VerticalMenu = ({
+  menu,
+  focused,
+  currentWindow,
+  onOpen,
+  onButtonHover,
+}: VerticalMenuProps) => {
   const [fixedMenu, updateFixedMenu] = useState<MenuItem[]>([menuButton(menu)]);
   const childRefs = useChildRefs<HTMLButtonElement>(fixedMenu);
   const width = useWidth();
   const prevWidth = usePrevious(width);
-  const [{ selectedPath, hovering }, dispatch] = useReducer(reducer, initialState);
+  const [{ selectedPath, hovering }, dispatch] = useReducer(
+    reducer,
+    initialState
+  );
   const isOpen = selectedPath[depth] >= 0;
 
   useEffect(() => {
     // close menu when focused away from window
     // close menu when resizing the window
     if ((!focused && selectedPath[depth] >= 0) || prevWidth !== width) {
-      dispatch({ type: 'reset' });
+      dispatch({ type: "reset" });
     }
   }, [focused, width]);
 
@@ -54,7 +63,7 @@ const VerticalMenu = ({ menu, focused, currentWindow, onOpen, onButtonHover }: V
     dispatch,
     undefined,
     undefined,
-    currentWindow,
+    currentWindow
   );
 
   if ((fixedMenu[0].submenu?.length ?? 0) === 0) {

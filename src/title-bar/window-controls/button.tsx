@@ -1,14 +1,14 @@
-import React from 'react';
-import { useHover } from '../effects';
-import styles from '../style.css';
-import { WindowButtonProps, ColorMap } from '../typings';
+import React from "react";
+import { useHover } from "../effects";
+import styles from "../style.css";
+import { WindowButtonProps, ColorMap } from "../typings";
 
 const WindowButton = ({
   children,
   onClick,
   close,
   controls,
-  platform
+  platform,
 }: WindowButtonProps) => {
   const [ref, hovering] = useHover<HTMLDivElement>();
   let config: ColorMap;
@@ -18,13 +18,10 @@ const WindowButton = ({
     config = hovering ? controls.normal.hover! : controls.normal.default!;
   }
 
-  const width = platform === 'win32' ? '100%' : '20px';
-  const height = platform === 'win32' ? '100%' : '20px';
+  const width = platform === "win32" ? "100%" : "20px";
+  const height = platform === "win32" ? "100%" : "20px";
   return (
-    <div
-      ref={ref}
-      className={styles.Control}
-    >
+    <div ref={ref} className={styles.Control}>
       <div
         style={{
           width,
@@ -32,14 +29,14 @@ const WindowButton = ({
           color: config.color,
           background: config.background,
           borderRadius: controls.borderRadius,
-          border: controls.border
+          border: controls.border,
         }}
         onClick={onClick}
       >
         {children}
       </div>
     </div>
-  )
+  );
 };
 
 export default WindowButton;

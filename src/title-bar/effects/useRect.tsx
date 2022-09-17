@@ -8,7 +8,7 @@ function getRect<T extends HTMLElement>(element?: T): RectResult {
     left: 0,
     right: 0,
     top: 0,
-    width: 0
+    width: 0,
   };
   if (element) rect = element.getBoundingClientRect();
   return rect;
@@ -32,8 +32,9 @@ export default function useRect<T extends HTMLElement>(
 
     handleResize();
 
-    let resizeObserver: ResizeObserver | undefined =
-      new ResizeObserver(() => handleResize());
+    let resizeObserver: ResizeObserver | undefined = new ResizeObserver(() =>
+      handleResize()
+    );
     resizeObserver.observe(element);
     return () => {
       if (!resizeObserver) return;

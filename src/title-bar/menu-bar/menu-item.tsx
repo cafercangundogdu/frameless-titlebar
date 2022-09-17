@@ -1,23 +1,23 @@
-import React, { useContext, useEffect } from 'react';
-import styles from '../style.css';
-import { ThemeContext } from '../theme';
-import { useHover } from '../effects';
+import React, { useContext, useEffect } from "react";
+import styles from "../style.css";
+import { ThemeContext } from "../theme";
+import { useHover } from "../effects";
 import {
   Arrow,
   Unchecked,
   RadioUnchecked,
   RadioChecked,
-  Checked
-} from './icons';
-import MenuList from './menu-list';
-import { currentSelected, isItemSubMenu, isItemSeparator } from '../utils';
-import { MenuItem, TitleBarTheme, MenuItemProps } from '../typings';
+  Checked,
+} from "./icons";
+import MenuList from "./menu-list";
+import { currentSelected, isItemSubMenu, isItemSeparator } from "../utils";
+import { MenuItem, TitleBarTheme, MenuItemProps } from "../typings";
 
 const getStatusIcon = (item: MenuItem) => {
   switch (item.type) {
-    case 'radio':
+    case "radio":
       return item.checked ? RadioChecked : RadioUnchecked;
-    case 'checkbox':
+    case "checkbox":
       return item.checked ? Checked : Unchecked;
     default: {
       if (item?.icon) {
@@ -33,14 +33,22 @@ const getStatusIcon = (item: MenuItem) => {
   }
 };
 
-const getTextColor = (item: MenuItem, hovering: boolean, theme: Required<TitleBarTheme>) => {
+const getTextColor = (
+  item: MenuItem,
+  hovering: boolean,
+  theme: Required<TitleBarTheme>
+) => {
   if (hovering && !item.disabled) {
     return theme.menu.item!.active!.color;
   }
   return theme.menu.item!.default!.color;
 };
 
-const getIconColor = (item: MenuItem, hovering: boolean, theme: Required<TitleBarTheme>) => {
+const getIconColor = (
+  item: MenuItem,
+  hovering: boolean,
+  theme: Required<TitleBarTheme>
+) => {
   if (hovering && !item.disabled) {
     return theme.menu.item!.active!.color;
   }
@@ -50,12 +58,22 @@ const getIconColor = (item: MenuItem, hovering: boolean, theme: Required<TitleBa
   return theme.menu.item!.default!.color;
 };
 
-const getAcceleratorColor = (item: MenuItem, hovering: boolean, theme: Required<TitleBarTheme>) => {
-  return hovering && !item.disabled ? theme.menu.item!.active!.color : theme.menu.accelerator!.color;
+const getAcceleratorColor = (
+  item: MenuItem,
+  hovering: boolean,
+  theme: Required<TitleBarTheme>
+) => {
+  return hovering && !item.disabled
+    ? theme.menu.item!.active!.color
+    : theme.menu.accelerator!.color;
 };
 
-const getBackgroundColor = (hovering: boolean, item: MenuItem, theme: Required<TitleBarTheme>) => {
-  return hovering && !item.disabled ? theme.menu.item!.active!.background : '';
+const getBackgroundColor = (
+  hovering: boolean,
+  item: MenuItem,
+  theme: Required<TitleBarTheme>
+) => {
+  return hovering && !item.disabled ? theme.menu.item!.active!.background : "";
 };
 
 const MenuItemComponent = ({
@@ -65,7 +83,7 @@ const MenuItemComponent = ({
   depth,
   dispatch,
   selectedPath,
-  idx
+  idx,
 }: MenuItemProps) => {
   if (item.hidden === true) {
     return null;
@@ -84,7 +102,7 @@ const MenuItemComponent = ({
   const [ref, hovering] = useHover<HTMLLIElement>();
   useEffect(() => {
     if (hovering) {
-      dispatch({ type: isSubMenu ? 'hover-sub' : 'set', depth, selected: idx });
+      dispatch({ type: isSubMenu ? "hover-sub" : "set", depth, selected: idx });
     }
   }, [hovering, depth]);
 
@@ -102,7 +120,7 @@ const MenuItemComponent = ({
       style={{
         color: textColor,
         opacity: !item.disabled ? 1 : 0.3,
-        backgroundColor
+        backgroundColor,
       }}
       role="option"
       tabIndex={0}
@@ -113,7 +131,7 @@ const MenuItemComponent = ({
         style={{
           height: theme.menu.item!.height,
           maxWidth: theme.menu.list?.maxWidth,
-          minWidth: theme.menu.list?.minWidth
+          minWidth: theme.menu.list?.minWidth,
         }}
       >
         <div className={styles.StatusIcon} style={{ color: iconColor }}>

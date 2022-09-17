@@ -1,10 +1,15 @@
-import React, { useRef, useEffect } from 'react';
-import { useRect, useHoverWithRef, useClickAway } from '../effects';
-import Overlay from './overlay';
-import { MenuButtonTheme } from '../typings';
-import styles from '../style.css';
+import React, { useRef, useEffect } from "react";
+import { useRect, useHoverWithRef, useClickAway } from "../effects";
+import Overlay from "./overlay";
+import { MenuButtonTheme } from "../typings";
+import styles from "../style.css";
 
-const getBackgroundColor = (disabled: boolean, selected: boolean, hovering: boolean, theme: Required<MenuButtonTheme>): string => {
+const getBackgroundColor = (
+  disabled: boolean,
+  selected: boolean,
+  hovering: boolean,
+  theme: Required<MenuButtonTheme>
+): string => {
   if (!disabled) {
     if (selected) {
       return theme.active!.background!;
@@ -18,14 +23,23 @@ const getBackgroundColor = (disabled: boolean, selected: boolean, hovering: bool
   return theme.default!.background!;
 };
 
-const getColor = (disabled: boolean, open: boolean, theme: Required<MenuButtonTheme>): string => {
+const getColor = (
+  disabled: boolean,
+  open: boolean,
+  theme: Required<MenuButtonTheme>
+): string => {
   if (open && !disabled) {
     return theme.active!.color!;
   }
   return theme.default!.color!;
 };
 
-const getOpacity = (disabled: boolean, focused: boolean, inActiveOpacity: number, theme: Required<MenuButtonTheme>): number => {
+const getOpacity = (
+  disabled: boolean,
+  focused: boolean,
+  inActiveOpacity: number,
+  theme: Required<MenuButtonTheme>
+): number => {
   if (!focused) {
     return inActiveOpacity!;
   }
@@ -68,7 +82,7 @@ const Button = ({
   style,
   disabled,
   hideOverlay,
-  onHover
+  onHover,
 }: ButtonProps) => {
   myRef = myRef ?? useRef(null);
   const bounds = useRect(myRef);
@@ -93,7 +107,7 @@ const Button = ({
       className={styles.MenuButtonContainer}
       style={{
         ...(style ?? {}),
-        backgroundColor
+        backgroundColor,
       }}
     >
       <div className={styles.MenuButtonWrapper}>
@@ -102,32 +116,31 @@ const Button = ({
           ref={myRef}
           style={{
             color,
-            maxWidth: theme.maxWidth
+            maxWidth: theme.maxWidth,
           }}
           onClick={onClick}
           tabIndex={0}
           aria-haspopup
           aria-label={ariaLabel}
         >
-          <div className={styles.MenuButtonLabelWrapper} style={{ opacity, maxWidth: theme.maxWidth }}>
+          <div
+            className={styles.MenuButtonLabelWrapper}
+            style={{ opacity, maxWidth: theme.maxWidth }}
+          >
             {label}
           </div>
         </button>
       </div>
-      {
-        open && !hideOverlay && (
-          <Overlay
-            top={bounds.bottom}
-          />
-        )
-      }
-      {
-        open && children
-      }
+      {open && !hideOverlay && <Overlay top={bounds.bottom} />}
+      {open && children}
     </div>
-  )
-}
+  );
+};
 
-export default React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
-  return <Button {...props} myRef={ref as React.RefObject<HTMLButtonElement>} />
-});
+export default React.forwardRef<HTMLButtonElement, ButtonProps>(
+  (props, ref) => {
+    return (
+      <Button {...props} myRef={ref as React.RefObject<HTMLButtonElement>} />
+    );
+  }
+);

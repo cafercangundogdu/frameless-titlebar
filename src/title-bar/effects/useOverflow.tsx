@@ -1,18 +1,18 @@
-import { useState, useEffect, useRef } from 'react';
-import useRect from './useRect';
-import { MenuItem, OverflowState } from '../typings';
+import { useState, useEffect, useRef } from "react";
+import useRect from "./useRect";
+import { MenuItem, OverflowState } from "../typings";
 
 const calcMenuOverflow = (
   menu: MenuItem[],
   menuBar: React.RefObject<HTMLElement>,
   refs: React.RefObject<HTMLElement>[],
   overflowRef?: React.RefObject<HTMLElement>,
-  isEnabled = true,
+  isEnabled = true
 ): OverflowState => {
   const [overflow, setOverflow] = useState<OverflowState>({
     menu: [],
     index: menu.length,
-    hide: true
+    hide: true,
   });
   const activeMenus = useRef(menu?.length ?? 0);
   const menuBarRect = useRect(menuBar);
@@ -24,23 +24,23 @@ const calcMenuOverflow = (
     const prevMenusShown = activeMenus.current;
     let numMenusShown = 0;
 
-    refs?.forEach(mItem => {
+    refs?.forEach((mItem) => {
       const node = mItem?.current;
       if (node) {
         if (!full) {
           const size = node.offsetWidth;
           if (currentSize + size > availableSize) {
             full = true;
-            node.style.visibility = 'hidden';
+            node.style.visibility = "hidden";
           } else {
             currentSize += size;
             numMenusShown += 1;
             if (numMenusShown > prevMenusShown) {
-              node.style.visibility = 'visible';
+              node.style.visibility = "visible";
             }
           }
         } else {
-          node.style.visibility = 'hidden';
+          node.style.visibility = "hidden";
         }
       }
     });
@@ -55,19 +55,19 @@ const calcMenuOverflow = (
           numMenusShown -= 1;
           const item = refs[numMenusShown].current;
           currentSize -= item!.offsetWidth;
-          item!.style.visibility = 'hidden';
+          item!.style.visibility = "hidden";
         }
       }
       setOverflow({
         menu: [...menu.slice(numMenusShown, menu.length)],
         index: numMenusShown,
-        hide: false
+        hide: false,
       });
     } else {
       setOverflow({
         menu: [],
         index: menu.length,
-        hide: true
+        hide: true,
       });
     }
 

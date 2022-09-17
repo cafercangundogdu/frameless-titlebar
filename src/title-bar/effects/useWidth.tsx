@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 const getWidth = () =>
   window.innerWidth ||
@@ -23,12 +23,12 @@ const useWidth = (): number => {
       timeoutId = setTimeout(() => setWidth(getWidth()), 150);
     };
     // set resize listener
-    window.addEventListener('resize', resizeListener);
+    window.addEventListener("resize", resizeListener);
 
     // clean up function
     return () => {
       // remove resize listener
-      window.removeEventListener('resize', resizeListener);
+      window.removeEventListener("resize", resizeListener);
     };
   }, []);
 

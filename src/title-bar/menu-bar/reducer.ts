@@ -1,52 +1,63 @@
 export type MenuState = {
-  selectedPath: number[],
-  altKey: boolean,
-  hovering: boolean
+  selectedPath: number[];
+  altKey: boolean;
+  hovering: boolean;
 };
 
 export type MenuAction =
-  | { type: 'alt', altKey: boolean }
-  | { type: 'reset' }
-  | { type: 'del', depth: number }
-  | { type: 'set' | 'hover-sub' | 'button-set', depth: number, selected: number }
-  | { type: 'hovering', hovering: boolean };
+  | { type: "alt"; altKey: boolean }
+  | { type: "reset" }
+  | { type: "del"; depth: number }
+  | {
+      type: "set" | "hover-sub" | "button-set";
+      depth: number;
+      selected: number;
+    }
+  | { type: "hovering"; hovering: boolean };
 
-export const initialState: MenuState = { selectedPath: [-1], altKey: false, hovering: false };
+export const initialState: MenuState = {
+  selectedPath: [-1],
+  altKey: false,
+  hovering: false,
+};
 
 const menuReducer = (state: MenuState, action: MenuAction): MenuState => {
   switch (action.type) {
-    case 'alt': {
+    case "alt": {
       return {
         ...state,
-        altKey: action.altKey
+        altKey: action.altKey,
       };
     }
-    case 'reset': {
+    case "reset": {
       return {
         ...state,
-        selectedPath: [-1]
+        selectedPath: [-1],
       };
     }
-    case 'set': {
+    case "set": {
       return {
         ...state,
-        selectedPath: [...state.selectedPath.slice(0, action.depth), action.selected]
+        selectedPath: [
+          ...state.selectedPath.slice(0, action.depth),
+          action.selected,
+        ],
       };
     }
-    case 'del': {
+    case "del": {
       return {
         ...state,
-        selectedPath: state.selectedPath.slice(0, action.depth)
-      }
+        selectedPath: state.selectedPath.slice(0, action.depth),
+      };
     }
-    case 'hovering': {
+    case "hovering": {
       return {
         ...state,
         hovering: action.hovering,
       };
     }
-    case 'button-set':
-    case 'hover-sub': {
+    case "button-set":
+    case "hover-sub": {
       // when clicking already opened menu - close it
       if (state.selectedPath[action.depth] === action.selected) {
         return {
@@ -58,7 +69,11 @@ const menuReducer = (state: MenuState, action: MenuAction): MenuState => {
       // when hovering over a sub menu add -1 for the sub menu
       return {
         ...state,
-        selectedPath: [...state.selectedPath.slice(0, action.depth), action.selected, -1]
+        selectedPath: [
+          ...state.selectedPath.slice(0, action.depth),
+          action.selected,
+          -1,
+        ],
       };
     }
     default:
