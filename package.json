@@ -1,10 +1,10 @@
 {
-  "name": "@indutny/frameless-titlebar",
-  "version": "2.3.5",
+  "name": "@cafercangundogdu/frameless-titlebar",
+  "version": "2.3.6",
   "description": "Customizable titlebar for frameless Electron desktop applications",
-  "author": "Cristian006",
+  "author": "cafercangundogdu",
   "license": "MIT",
-  "repository": "Cristian006/frameless-titlebar",
+  "repository": "cafercangundogdu/frameless-titlebar",
   "files": [
     "dist"
   ],
@@ -29,7 +29,7 @@
     "deepmerge": "^4.2.2"
   },
   "peerDependencies": {
-    "react": "^17.0.0"
+    "react": "^18.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
@@ -38,10 +38,10 @@
     "@testing-library/react-hooks": "^3.2.1",
     "@types/classnames": "^2.2.10",
     "@types/jest": "^23.3.13",
-    "@types/react": "^16.7.22",
+    "@types/react": "^18.0.9",
     "cross-env": "^5.2.0",
     "gh-pages": "^2.0.1",
-    "react": "^17.0.0",
+    "react": "^18.1.0",
     "react-scripts": "^3.4.0",
     "react-test-renderer": "^17.0.0",
     "rollup": "2.75.5",
