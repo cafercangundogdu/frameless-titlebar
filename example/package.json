@@ -10,7 +10,7 @@
     "frameless-titlebar": "link:..",
     "notistack": "^0.9.9",
     "prop-types": "^15.6.2",
-    "react": "link:../node_modules/react",
+    "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-scripts": "^3.0.1"
   },
