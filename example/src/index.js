@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import ReactDOM from 'react-dom'
+import { createRoot } from 'react-dom/client'
 import { changePalette } from './theme'
-import { ThemeProvider } from '@material-ui/core/styles'
+import { ThemeProvider } from '@mui/material/styles'
 import { SnackbarProvider } from 'notistack'
 
 import './index.css'
@@ -21,7 +21,7 @@ const Root = () => {
         maxSnack={3}
         anchorOrigin={{
           vertical: 'bottom',
-          horizontal: 'center'
+          horizontal: 'center',
         }}
       >
         <App setPalette={setPaletteType} />
@@ -30,4 +30,6 @@ const Root = () => {
   )
 }
 
-ReactDOM.render(<Root />, document.getElementById('root'))
+const container = document.getElementById('root')
+const root = createRoot(container) // createRoot(container!) if you use TypeScript
+root.render(<Root />)

@@ -1,35 +1,20 @@
-import React, {
-  Fragment,
-  useContext,
-  useEffect,
-  useState,
-  useCallback,
-} from "react";
-import { ThemeContext } from "../theme";
-import MenuList from "./menu-list";
-import {
-  currentSelected,
-  isItemSubMenu,
-  splitLabel,
-  SplitLabel,
-} from "../utils";
-import styles from "../style.css";
-import {
-  MenuButtonProps,
-  FullMenuBottonProps,
-  MenuButtonTheme,
-} from "../typings";
-import Button from "../components/button";
+import React, { Fragment, useContext, useEffect, useState, useCallback } from 'react'
+import { ThemeContext } from '../theme'
+import MenuList from './menu-list'
+import { currentSelected, isItemSubMenu, splitLabel, SplitLabel } from '../utils'
+import styles from '../../assets/style.module.css'
+import { MenuButtonProps, FullMenuBottonProps, MenuButtonTheme } from '../typings'
+import Button from '../components/button'
 
 const useAltLabel = (l?: string): SplitLabel => {
-  const [label, setLabel] = useState(splitLabel(l));
+  const [label, setLabel] = useState(splitLabel(l))
 
   useEffect(() => {
-    setLabel(splitLabel(l));
-  }, [l]);
+    setLabel(splitLabel(l))
+  }, [l])
 
-  return label;
-};
+  return label
+}
 
 const MenuButton = ({
   focused,
@@ -44,35 +29,35 @@ const MenuButton = ({
   dispatch,
   icon,
 }: FullMenuBottonProps) => {
-  const theme = useContext(ThemeContext);
-  const label = useAltLabel(item.label);
+  const theme = useContext(ThemeContext)
+  const label = useAltLabel(item.label)
   const onClose = useCallback(() => {
     if (myRef.current) {
-      myRef.current.blur();
+      myRef.current.blur()
     }
-    dispatch({ type: "set", depth, selected: -1 });
-  }, [myRef.current]);
+    dispatch({ type: 'set', depth, selected: -1 })
+  }, [myRef.current])
 
   const onClick = useCallback(() => {
     if (!item.disabled) {
-      dispatch({ type: "button-set", depth, selected: idx });
+      dispatch({ type: 'button-set', depth, selected: idx })
     }
-  }, [idx, item.disabled]);
+  }, [idx, item.disabled])
 
   const onHover = useCallback(
     (hovering: boolean) => {
-      dispatch({ type: "hovering", hovering });
+      dispatch({ type: 'hovering', hovering })
       if (currentSelected(selectedPath, depth) >= 0 && hovering) {
-        onClick();
+        onClick()
       }
     },
-    [myRef.current, selectedPath, depth, onClick]
-  );
+    [myRef.current, selectedPath, depth, onClick],
+  )
 
-  const selected = currentSelected(selectedPath, depth) === idx;
-  const isSubMenu = isItemSubMenu(item);
-  const open: boolean = !(item?.disabled ?? false) && isSubMenu && selected;
-  const textDecoration = !item.disabled && altKey ? "underline" : "none";
+  const selected = currentSelected(selectedPath, depth) === idx
+  const isSubMenu = isItemSubMenu(item)
+  const open: boolean = !(item?.disabled ?? false) && isSubMenu && selected
+  const textDecoration = !item.disabled && altKey ? 'underline' : 'none'
 
   return (
     <Button
@@ -84,11 +69,11 @@ const MenuButton = ({
       style={style}
       inactiveOpacity={theme.bar.inActiveOpacity!}
       onClick={onClick}
-      ariaLabel={item.label?.replace("&", "")}
+      ariaLabel={item.label?.replace('&', '')}
       label={
         icon ?? (
           <Fragment>
-            <span className={styles.MenuButtonLabel} aria-hidden="true">
+            <span className={styles.MenuButtonLabel} aria-hidden='true'>
               {label.before}
             </span>
             <span
@@ -96,11 +81,11 @@ const MenuButton = ({
               style={{
                 textDecoration,
               }}
-              aria-hidden="true"
+              aria-hidden='true'
             >
               {label.letter}
             </span>
-            <span className={styles.MenuButtonLabel} aria-hidden="true">
+            <span className={styles.MenuButtonLabel} aria-hidden='true'>
               {label.after}
             </span>
           </Fragment>
@@ -119,16 +104,9 @@ const MenuButton = ({
         dispatch={dispatch}
       />
     </Button>
-  );
-};
+  )
+}
 
-export default React.forwardRef<HTMLButtonElement, MenuButtonProps>(
-  (props, ref) => {
-    return (
-      <MenuButton
-        {...props}
-        myRef={ref as React.RefObject<HTMLButtonElement>}
-      />
-    );
-  }
-);
+export default React.forwardRef<HTMLButtonElement, MenuButtonProps>((props, ref) => {
+  return <MenuButton {...props} myRef={ref as React.RefObject<HTMLButtonElement>} />
+})

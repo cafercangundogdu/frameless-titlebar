@@ -23,32 +23,32 @@ const createMenu = (queueSnack) => {
           label: 'Frameless Titlebar',
           accelerator: 'v2.0.0',
           disabled: true,
-          click
+          click,
         },
         {
           label: 'New Window',
-          click
+          click,
         },
         {
           label: 'Preferences',
-          click
+          click,
         },
         {
           type: 'separator',
-          click
+          click,
         },
         {
           label: 'Resizeable',
           checked: true,
           type: 'checkbox',
-          click
+          click,
         },
         {
           label: 'Quit Application',
           accelerator: 'Ctrl+Q',
-          click
-        }
-      ]
+          click,
+        },
+      ],
     },
     {
       label: 'Radios',
@@ -56,24 +56,24 @@ const createMenu = (queueSnack) => {
         {
           label: 'Option 1',
           type: 'radio',
-          click
+          click,
         },
         {
           label: 'Option 2',
           type: 'radio',
-          click
+          click,
         },
         {
           label: 'Option 3',
           type: 'radio',
-          click
+          click,
         },
         {
           label: 'Option 4',
           type: 'radio',
-          click
-        }
-      ]
+          click,
+        },
+      ],
     },
     {
       label: 'Edit',
@@ -81,42 +81,42 @@ const createMenu = (queueSnack) => {
         {
           label: 'Undo',
           accelerator: 'Ctrl+Z',
-          click
+          click,
         },
         {
           label: 'Redo',
           accelerator: 'Ctrl+Y',
-          click
+          click,
         },
         {
-          type: 'separator'
+          type: 'separator',
         },
         {
           label: 'Cut',
           accelerator: 'Ctrl+X',
-          click
+          click,
         },
         {
           label: 'Copy',
           accelerator: 'Ctrl+C',
-          click
+          click,
         },
         {
           label: 'Paste',
           accelerator: 'Ctrl+V',
-          click
+          click,
         },
         {
           label: 'Paste and Match Style',
           accelerator: 'Ctrl+Shift+V',
-          click
+          click,
         },
         {
           label: 'Seleect All',
           accelerator: 'Ctrl+A',
-          click
-        }
-      ]
+          click,
+        },
+      ],
     },
     {
       label: 'View Long Label Truncation',
@@ -124,26 +124,27 @@ const createMenu = (queueSnack) => {
         {
           label: 'Toggle Full Screen',
           accelerator: 'F11',
-          click
+          click,
         },
         {
           label: 'Toggle Developer Tools',
           accelerator: 'Ctrl+Shift+I',
-          click
-        }
-      ]
+          click,
+        },
+      ],
     },
     {
       label: 'Test',
       submenu: [
         {
           label: 'Test One',
-          click
+          click,
         },
         {
-          label: 'Lorem Ipsum cupcake ipsum dolor sit amet. Pastry jelly-o chupa chups. Sweet chocolate pie jujubes bear claw. Chocolate cake danish tootsie roll bonbon jelly tiramisu cookie fruitcake.',
+          label:
+            'Lorem Ipsum cupcake ipsum dolor sit amet. Pastry jelly-o chupa chups. Sweet chocolate pie jujubes bear claw. Chocolate cake danish tootsie roll bonbon jelly tiramisu cookie fruitcake.',
           accelerator: 'Alt+7',
-          click
+          click,
         },
         {
           label: 'Test Three',
@@ -153,42 +154,42 @@ const createMenu = (queueSnack) => {
               submenu: [
                 {
                   label: 'Depth 3',
-                  click
+                  click,
                 },
                 {
                   label: 'Test Five',
-                  click
-                }
-              ]
+                  click,
+                },
+              ],
             },
             {
               label: 'Test Six',
-              click
+              click,
             },
             {
               label: 'Test Seven',
-              click
-            }
-          ]
-        }
-      ]
+              click,
+            },
+          ],
+        },
+      ],
     },
     {
       label: 'Help',
       submenu: [
         {
           label: 'Home Page',
-          click
+          click,
         },
         {
           label: 'Report an Issue',
-          click
+          click,
         },
         {
           label: 'About Frameless Titlebar',
-          click
-        }
-      ]
+          click,
+        },
+      ],
     },
     {
       label: 'Random',
@@ -196,32 +197,32 @@ const createMenu = (queueSnack) => {
       subemnu: [
         {
           label: 'Single Item',
-          click
-        }
-      ]
+          click,
+        },
+      ],
     },
     {
       label: 'Overflow',
       submenu: [
         {
           label: 'Random 1',
-          click
-        }
-      ]
+          click,
+        },
+      ],
     },
     {
       label: 'Random 2',
       submenu: [
         {
           label: 'Random 3',
-          click
+          click,
         },
         {
           label: 'Random 4',
-          click
-        }
-      ]
-    }
+          click,
+        },
+      ],
+    },
   ]
 }
 

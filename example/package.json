@@ -1,18 +1,21 @@
 {
   "name": "frameless-titlebar-example",
-  "homepage": "https://Cristian006.github.io/frameless-titlebar",
+  "homepage": "https://cafercangundogdu.github.io/frameless-titlebar",
   "version": "0.0.0",
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "@material-ui/core": "^4.9.8",
-    "@material-ui/icons": "^4.9.1",
-    "frameless-titlebar": "link:..",
-    "notistack": "^0.9.9",
-    "prop-types": "^15.6.2",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
-    "react-scripts": "^3.0.1"
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
+    "@mui/icons-material": "^5.10.6",
+    "@mui/material": "^5.10.6",
+    "@mui/styles": "^5.10.6",
+    "@cafercangundogdu/frameless-titlebar": "link:..",
+    "notistack": "^2.0.5",
+    "prop-types": "^15.8.1",
+    "react": "link:../node_modules/react",
+    "react-dom": "^18.2.0",
+    "react-scripts": "^5.0.1"
   },
   "scripts": {
     "start": "react-scripts start",

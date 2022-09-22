@@ -1,14 +1,14 @@
-import { createMuiTheme } from '@material-ui/core/styles'
+import { createTheme } from '@mui/material/styles'
 
 const palette = {
   type: 'dark',
   primary: { main: '#34495d' },
-  secondary: { main: '#ee7738' }
+  secondary: { main: '#ee7738' },
 }
 const themeName = 'Oracle Cinnabar Duck'
 
 export const changePalette = (type) => {
-  return createMuiTheme({ palette: { ...palette, type }, themeName })
+  return createTheme({ palette: { ...palette, type }, themeName })
 }
 
-export default createMuiTheme({ palette, themeName })
+export default createTheme({ palette, themeName })

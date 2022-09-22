@@ -1,20 +1,20 @@
-import React, { useContext, useCallback } from "react";
-import styles from "../style.css";
-import { ThemeContext } from "../theme";
+import React, { useContext, useCallback } from 'react'
+import styles from '../../assets/style.module.css'
+import { ThemeContext } from '../theme'
 
 interface OverlayProps {
-  top: number | string;
-  onClick?: (e: React.MouseEvent) => void;
+  top: number | string
+  onClick?: (e: React.MouseEvent) => void
 }
 
 const Overlay = ({ top, onClick }: OverlayProps) => {
-  const theme = useContext(ThemeContext);
+  const theme = useContext(ThemeContext)
   const click = useCallback(
     (e: React.MouseEvent) => {
-      onClick && onClick(e);
+      onClick && onClick(e)
     },
-    [onClick]
-  );
+    [onClick],
+  )
   return (
     <div
       className={styles.MenuOverlay}
@@ -26,7 +26,7 @@ const Overlay = ({ top, onClick }: OverlayProps) => {
       }}
       onClick={click}
     />
-  );
-};
+  )
+}
 
-export default Overlay;
+export default Overlay

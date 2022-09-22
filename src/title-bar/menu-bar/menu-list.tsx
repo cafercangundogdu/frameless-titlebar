@@ -1,44 +1,22 @@
-import React, { useContext, useRef, RefObject } from "react";
-import styles from "../style.css";
-import MenuItem from "./menu-item";
-import { ThemeContext } from "../theme";
-import {
-  useRect,
-  useMenuScroll,
-  useLayoutBounds,
-  useScrollFocus,
-} from "../effects";
-import { currentSelected, menuItemClick, calcMaximums } from "../utils";
-import { MenuListProps, FullMenuListProps } from "../typings";
+import React, { useContext, useRef, RefObject } from 'react'
+import styles from '../../assets/style.module.css'
+import MenuItem from './menu-item'
+import { ThemeContext } from '../theme'
+import { useRect, useMenuScroll, useLayoutBounds, useScrollFocus } from '../effects'
+import { currentSelected, menuItemClick, calcMaximums } from '../utils'
+import { MenuListProps, FullMenuListProps } from '../typings'
 
-const MenuList = ({
-  menu,
-  parentRef,
-  currentWindow,
-  depth,
-  selectedPath,
-  dispatch,
-  subLabel,
-}: FullMenuListProps) => {
-  const theme = useContext(ThemeContext);
-  const menuRef = useRef(null);
-  const scrollRef = useRef(null);
-  const parentBounds = useRect(parentRef);
-  const bounds = useRect(menuRef);
-  const [maxHeight, maxWidth] = calcMaximums(bounds, theme);
-  const hasSubLabel = !!(
-    subLabel &&
-    subLabel !== "" &&
-    theme.menu.header!.show!
-  );
-  const layout = useLayoutBounds(parentBounds, depth, hasSubLabel);
-  const handleScroll = useMenuScroll(scrollRef);
-  useScrollFocus(
-    currentSelected(selectedPath, depth),
-    theme.menu.item!.height!,
-    parentBounds,
-    scrollRef
-  );
+const MenuList = ({ menu, parentRef, currentWindow, depth, selectedPath, dispatch, subLabel }: FullMenuListProps) => {
+  const theme = useContext(ThemeContext)
+  const menuRef = useRef(null)
+  const scrollRef = useRef(null)
+  const parentBounds = useRect(parentRef)
+  const bounds = useRect(menuRef)
+  const [maxHeight, maxWidth] = calcMaximums(bounds, theme)
+  const hasSubLabel = !!(subLabel && subLabel !== '' && theme.menu.header!.show!)
+  const layout = useLayoutBounds(parentBounds, depth, hasSubLabel)
+  const handleScroll = useMenuScroll(scrollRef)
+  useScrollFocus(currentSelected(selectedPath, depth), theme.menu.item!.height!, parentBounds, scrollRef)
   return (
     <div
       className={styles.MenuListContainer}
@@ -76,7 +54,7 @@ const MenuList = ({
           <div
             className={styles.MenuListVertical}
             style={{
-              padding: hasSubLabel ? "0px 0px 5px 0px" : "5px 0px",
+              padding: hasSubLabel ? '0px 0px 5px 0px' : '5px 0px',
             }}
           >
             <ul className={styles.MenuListItems}>
@@ -90,9 +68,7 @@ const MenuList = ({
                     depth={depth}
                     selectedPath={selectedPath}
                     dispatch={dispatch}
-                    onClick={(e) =>
-                      menuItemClick(e, idx, item, menu, dispatch, currentWindow)
-                    }
+                    onClick={(e) => menuItemClick(e, idx, item, menu, dispatch, currentWindow)}
                   />
                 ))}
             </ul>
@@ -100,12 +76,12 @@ const MenuList = ({
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
 // export default MenuList;
 
 export default React.forwardRef<HTMLElement, MenuListProps>((props, ref) => (
   // eslint-disable-next-line react/jsx-props-no-spreading
   <MenuList {...props} parentRef={ref as RefObject<HTMLElement>} />
-));
+))

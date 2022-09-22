@@ -13,17 +13,21 @@
     "LICENSE",
     "README.md"
   ],
-  "main": "dist/index.js",
-  "module": "dist/index.es.js",
-  "jsnext:main": "dist/index.es.js",
+  "main": "dist/cjs/index.js",
+  "module": "dist/cjs/index.js",
+  "jsnext:main": "dist/cjs/index.js",
   "engines": {
     "node": ">=8",
     "npm": ">=5"
   },
   "scripts": {
-    "build": "yarn build:esm && yarn build:cjs",
+    "build": "yarn clean && yarn build:esm && yarn build:cjs",
     "build:esm": "tsc",
     "build:cjs": "tsc --module commonjs --outDir dist/cjs",
+    "postbuild": "yarn copy-files:esm && yarn copy-files:cjs",
+    "copy-files:esm": "copyfiles -u 1 src/**/*.html src/**/*.css dist/esm/",
+    "copy-files:cjs": "copyfiles -u 1 src/**/*.html src/**/*.css dist/cjs/",
+    "clean": "rimraf dist/",
     "prepare": "npm run build",
     "prepublishOnly": "npm test && npm run prettier && npm run lint",
     "lint": "eslint \"{**/*,*}.{js,ts,jsx,tsx}\"",
@@ -33,19 +37,27 @@
   "peerDependencies": {
     "react": ">=18"
   },
-  "dependencies": {},
+  "dependencies": {
+    "classnames": "^2.3.2",
+    "deepmerge": "^4.2.2"
+  },
   "devDependencies": {
+    "@types/node": "^18.7.18",
     "@types/react": "^18.0.20",
     "@typescript-eslint/eslint-plugin": "^5.38.0",
     "@typescript-eslint/parser": "^5.38.0",
+    "copyfiles": "^2.4.1",
     "eslint": "^8.23.1",
     "eslint-config-prettier": "^8.5.0",
+    "eslint-config-react-app": "^7.0.1",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.31.8",
     "eslint-plugin-react-hooks": "^4.6.0",
     "prettier": "^2.7.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "typescript": "^4.8.3"
+    "rimraf": "^3.0.2",
+    "typescript": "^4.8.3",
+    "typescript-plugin-css-modules": "^3.4.0"
   }
 }

@@ -1,5 +1,5 @@
 {
-  "include": ["src"],
+  "include": ["src/**/*"],
   "exclude": [
     "dist",
     "node_modules"
@@ -22,5 +22,11 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
+    "target": "es6",
+    "paths": {
+      "tslib" : ["./node_modules/tslib/tslib.d.ts"]
+    },
+    "types": ["node"],
+    "plugins": [{ "name": "typescript-plugin-css-modules" }]
   }
 }
