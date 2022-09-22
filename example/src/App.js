@@ -219,7 +219,7 @@ const App = ({ theme, setPalette }) => {
               variant='h6'
               color='secondary'
             >
-              v2.3.8 <span role='img'>🥳</span>
+              v2.4.0 <span role='img'>🥳</span>
             </Typography>
           </Typography>
           <Tooltip title='Toggle Dark/Light Mode'>
