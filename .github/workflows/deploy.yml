@@ -20,7 +20,7 @@ jobs:
       - name: Install and Build 🔧
         run: |
           yarn && yarn build && yarn link
-          cd example && yarn install && yarn link frameless-titlebar
+          cd example && yarn install && yarn link @cafercangundogdu/frameless-titlebar
           yarn run build
         env:
           CI: ''
