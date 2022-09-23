@@ -26,6 +26,7 @@ jobs:
         with:
           node-version: 14
           registry-url: https://registry.npmjs.org/
+      - run: npm config set scripts-prepend-node-path true
       - run: yarn install --immutable
       - run: yarn publish
         env:
@@ -40,6 +41,7 @@ jobs:
         with:
           node-version: 14
           registry-url: https://npm.pkg.github.com/
+      - run: npm config set scripts-prepend-node-path true
       - run: yarn install --immutable
       - run: yarn publish
         env:
