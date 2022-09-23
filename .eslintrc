@@ -1,9 +1,27 @@
 {
-  "parserOptions": {
-      "sourceType": "module",
-      "ecmaVersion": 2022,
-      "ecmaFeatures": {
-        "jsx": true
-      }
+  "root": true,
+  "extends": [
+  ],
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+  ],
+  "rules": {
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "@typescript-eslint/ban-ts-comment": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-non-null-asserted-optional-chain": "off",
+    "no-dupe-else-if": "off"
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "globals": {
+    "JSX": true
   }
 }
