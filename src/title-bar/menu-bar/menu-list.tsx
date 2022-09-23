@@ -82,6 +82,5 @@ const MenuList = ({ menu, parentRef, currentWindow, depth, selectedPath, dispatc
 // export default MenuList;
 
 export default React.forwardRef<HTMLElement, MenuListProps>((props, ref) => (
-  // eslint-disable-next-line react/jsx-props-no-spreading
   <MenuList {...props} parentRef={ref as RefObject<HTMLElement>} />
 ))

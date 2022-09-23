@@ -18,13 +18,11 @@ export const getCurrentRef = (
 
 export const toggleCheckedState = (menu: MenuItem[], index: number, radio = false) => {
   if (!radio) {
-    // eslint-disable-next-line no-param-reassign
     menu[index].checked = !menu[index].checked
     return
   }
   menu.forEach((item, idx) => {
     if (item.type === 'radio') {
-      // eslint-disable-next-line no-param-reassign
       item.checked = index === idx
     }
   })

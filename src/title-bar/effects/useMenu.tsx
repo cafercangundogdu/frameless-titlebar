@@ -32,7 +32,6 @@ const validate = (item: MenuItem) => {
   if (item === null || typeof item !== 'object') {
     return false
   }
-  // eslint-disable-next-line no-prototype-builtins
   return item.hasOwnProperty('label') || item.type === 'separator'
 }
 

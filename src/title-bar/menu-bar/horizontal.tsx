@@ -123,7 +123,6 @@ const HorizontalMenu = ({ menu, focused, currentWindow, menuBar, onOpen, onButto
           : {}
         return (
           <MenuButton
-            // eslint-disable-next-line react/no-array-index-key
             key={`${menuItem.label}-${depth}-${i}`}
             ref={currRef}
             focused={focused}
