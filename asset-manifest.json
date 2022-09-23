@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/frameless-titlebar/static/css/main.4f03c4f6.css",
-    "main.js": "/frameless-titlebar/static/js/main.96ce98ac.js",
+    "main.js": "/frameless-titlebar/static/js/main.b703d6e5.js",
     "index.html": "/frameless-titlebar/index.html",
     "main.4f03c4f6.css.map": "/frameless-titlebar/static/css/main.4f03c4f6.css.map",
-    "main.96ce98ac.js.map": "/frameless-titlebar/static/js/main.96ce98ac.js.map"
+    "main.b703d6e5.js.map": "/frameless-titlebar/static/js/main.b703d6e5.js.map"
   },
   "entrypoints": [
     "static/css/main.4f03c4f6.css",
-    "static/js/main.96ce98ac.js"
+    "static/js/main.b703d6e5.js"
   ]
 }
