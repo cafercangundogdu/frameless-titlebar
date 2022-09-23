@@ -1,12 +1,12 @@
 # @cafercangundogdu/frameless-titlebar
 
-[![NPM](https://img.shields.io/npm/v/frameless-titlebar.svg)](https://www.npmjs.com/package/frameless-titlebar) ![Build and Deploy](https://github.com/Cristian006/frameless-titlebar/workflows/Build%20and%20Deploy/badge.svg) ![NPM](https://img.shields.io/npm/l/frameless-titlebar)
+[![NPM](https://img.shields.io/npm/v/frameless-titlebar.svg)](https://www.npmjs.com/package/@cafercangundogdu/frameless-titlebar) ![Build and Deploy](https://github.com/cafercangundogdu/frameless-titlebar/workflows/Build%20and%20Deploy/badge.svg) ![NPM](https://img.shields.io/npm/l/frameless-titlebar)
 
 > Customizable titlebar for frameless electron windows built with React
 
 ![Main][main]
 
-## [Demo App](https://cristian006.github.io/frameless-titlebar)
+## [Demo App](https://cafercangundogdu.github.io/frameless-titlebar)
 
 The demo application can be found in the [example](./example) folder along with more images of the different titlebar styles:
 
@@ -17,9 +17,9 @@ The demo application can be found in the [example](./example) folder along with 
 ## Install
 
 ```bash
-npm install --save frameless-titlebar
+npm install --save @cafercangundogdu/frameless-titlebar
 # or
-yarn add frameless-titlebar
+yarn add @cafercangundogdu/frameless-titlebar
 ```
 
 ## Usage
@@ -47,7 +47,7 @@ import icon from 'path/to/icon.png'
 import menu from 'path/to/menu'
 import { remote } from 'electron'
 
-import TitleBar from 'frameless-titlebar'
+import TitleBar from '@cafercangundogdu/frameless-titlebar'
 
 const currentWindow = remote.getCurrentWindow()
 
@@ -115,7 +115,7 @@ Use titlebar theme in children
 
 ```jsx
 import { useContext } from 'react';
-import { TitlebarThemeContext } from 'frameless-titlebar';
+import { TitlebarThemeContext } from '@cafercangundogdu/frameless-titlebar';
 
 const CustomItem = () => {
   // access all of the current theme properties in this
