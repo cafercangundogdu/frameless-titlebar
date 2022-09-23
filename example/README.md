@@ -3,15 +3,15 @@
 ```bash
 # in the package root directory run npm link
 # this will add "frameless-titlebar" as a locally linkable package
-npm link
+yarn link
 
 # then link the local frameless-titlebar to the example
-cd ./example && npm link frameless-titlebar
+cd ./example && yarn link @cafercangundogdu/frameless-titlebar
 # and install example app dependencies
-npm install
+yarn
 
 # finally start the application
-npm start
+yarn start
 ```
 
 > Example theme object. All of these properties can be overwritten by passing them into the titlebar's `theme` property.
