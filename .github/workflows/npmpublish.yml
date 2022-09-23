@@ -15,7 +15,7 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '16.x'
-      - run: yarn install --immutable
+      - run: yarn install --immutable --immutable-cache --check-cache
 
   publish-npm:
     needs: build
@@ -27,7 +27,7 @@ jobs:
           node-version: '16.x'
           registry-url: https://registry.npmjs.org/
       - run: npm config set scripts-prepend-node-path true
-      - run: yarn install --immutable
+      - run: yarn install --immutable --immutable-cache --check-cache
       - run: yarn publish --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
@@ -42,7 +42,7 @@ jobs:
           node-version: '16.x'
           registry-url: https://npm.pkg.github.com/
       - run: npm config set scripts-prepend-node-path true
-      - run: yarn install --immutable
+      - run: yarn install --immutable --immutable-cache --check-cache
       - run: yarn publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.ACCESS_TOKEN}}
