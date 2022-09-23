@@ -1,6 +1,6 @@
 # @cafercangundogdu/frameless-titlebar
 
-[![NPM](https://img.shields.io/npm/v/frameless-titlebar.svg)](https://www.npmjs.com/package/@cafercangundogdu/frameless-titlebar) ![Build and Deploy](https://github.com/cafercangundogdu/frameless-titlebar/workflows/Build%20and%20Deploy/badge.svg) ![NPM](https://img.shields.io/npm/l/frameless-titlebar)
+[![NPM](https://img.shields.io/npm/v/@cafercangundogdu/frameless-titlebar.svg)](https://www.npmjs.com/package/@cafercangundogdu/frameless-titlebar) ![Build and Deploy](https://github.com/cafercangundogdu/frameless-titlebar/workflows/Build%20and%20Deploy/badge.svg) ![NPM](https://img.shields.io/npm/l/frameless-titlebar)
 
 > Customizable titlebar for frameless electron windows built with React
 
